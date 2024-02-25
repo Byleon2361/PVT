@@ -1,0 +1,14 @@
+* Устранить ветвление в цикле функции lower_bound_opt()
+
+не оптимизирована
+Time 0.704642
+70879036  cpu_core/branch-misses:u/
+
+оптимизирована
+Time 0.240563
+4440369 cpu_core/branch-misses:u/
+
+* Проверить устраняет ли компилятор ветвление при использовании ключа -O2
+Да
+
+STIBP: 1 thr indirect branch predictor   = true

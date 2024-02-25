@@ -1,0 +1,47 @@
+
+# DGEMM def: N=1024, elapsed time (sec) 3.861855
+# DGEMM interchange: N=1024, elapsed time (sec) 2.019501
+# DGEMM bloc: N=1024, BS=8, elapsed time (sec) 2.527220
+
+1. Определить ускорение и число промахов кеш-памяти версии с порядком циклов ikj (dgemm_interchange)
+a - ускорение
+a = 3.861855 / 2.019501  =1.912
+
+2. Определить ускорение и число промахов кеш-памяти блочной версии (dgemm_block),
+   определить размер блока, на котором достигается наименьшее время работы
+a = 3.861855 / 2.527220 = 1.527
+
+3. Оценить ускорение блочной версии с раскрученным циклом и автоматической векторизацией (dgemm-unroll.c)
+1024  2.531910  0.85
+
+
+(cpuid)
+
+ Physical Address and Linear Address Size (0x80000008/eax):
+      maximum physical address bits         = 0x27 (39)
+      maximum linear (virtual) address bits = 0x30 (48)
+      maximum guest physical address bits   = 0x0 (0)
+
+
+       --- cache 0 ---
+      cache type                         = data cache (1)
+      cache level                        = 0x1 (1)
+      self-initializing cache level      = true
+      fully associative cache            = false
+      maximum IDs for CPUs sharing cache = 0x1 (1)
+      maximum IDs for cores in pkg       = 0x7 (7)
+      system coherency line size         = 0x40 (64)
+      physical line partitions           = 0x1 (1)
+      ways of associativity              = 0xc (12)
+      number of sets                     = 0x40 (64)
+      WBINVD/INVD acts on lower caches   = false
+      inclusive to lower caches          = false
+      complex cache indexing             = false
+      number of sets (s)                 = 64
+      (size synth)                       = 49152 (48 KB)
+
+    L1
+    размер кеш-памяти - 48 KB
+    число множество (sets) - 64
+    число каналов в каждом множестве (ways) - 12
+    размер физического адреса - 39
