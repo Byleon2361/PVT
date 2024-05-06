@@ -1,5 +1,13 @@
 {
     "files.associations": {
-        "inttypes.h": "c"
+        "inttypes.h": "c",
+        "math.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c",
+        "atomic": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "*.ipp": "c"
     }
 }
