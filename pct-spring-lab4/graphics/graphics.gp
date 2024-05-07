@@ -1,4 +1,4 @@
-set terminal pdf color enhanced font 'Calibri,16' size 14cm,10cm
+set terminal pdf color enhanced font 'Calibri,16' size 15cm,10cm
 set output 'graph.pdf'
 set key inside left top font 'Calibri,16'
 set colorsequence podo

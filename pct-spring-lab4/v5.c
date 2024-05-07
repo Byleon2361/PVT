@@ -86,7 +86,7 @@ move_particles (struct particle *p, struct particle *f[], struct particle *v,
       p[i].x += dp.x;
       p[i].y += dp.y;
       p[i].z += dp.z;
-      // f[i].x = f[i].y = f[i].z = 0;
+      //f[i].x = f[i].y = f[i].z = 0;
     }
 }
 
@@ -113,7 +113,7 @@ main (int argc, char *argv[])
       struct particle *v
           = malloc (sizeof (*v) * n); // Скорость частицы (x, y, z)
       float *m = malloc (sizeof (*m) * n); // Масса частицы
-      for (int i = 0; i < n; i++)
+      for (int i = 0; i < n-88; i++)
         {
           p[i].x = rand () / (float)RAND_MAX - 0.5;
           p[i].y = rand () / (float)RAND_MAX - 0.5;
