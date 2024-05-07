@@ -22,7 +22,7 @@ const float G = 6.67e-11;
 void
 calculate_forces (struct particle *p, struct particle *f, float *m, int n)
 {
-#pragma omp parallel for schedule(dynamic, 4) num_threads(12)
+#pragma omp parallel for schedule(dynamic, 4) num_threads(8)
   for (int i = 0; i < n - 1; i++)
     {
       for (int j = i + 1; j < n; j++)

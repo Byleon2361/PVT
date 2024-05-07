@@ -80,8 +80,10 @@ int
 main (int argc, char *argv[])
 {
   int nThreads = 0;
-  double ttotal, tinit = 0, tforces = 0, tmove = 0, time = 0;
-  for (int i = 0; i <= 12; i += 2)
+  double ttotal, tinit = 0, tforces = 0, tmove = 0, time = 0, min = 1233;
+  FILE* file;
+  file = fopen("nblock.dat", "w");
+  for (int i = 0; i <= 8; i += 2)
     {
       ttotal = wtime ();
       int n = (argc > 1) ? atoi (argv[1]) : 10;
@@ -128,6 +130,8 @@ main (int argc, char *argv[])
       printf ("# NBody (n=%d)\n", n);
       printf ("# Elapsed time (sec): ttotal %.6f, tinit %.6f, nthreads  %d\n",
               time, tinit, i);
+      if(i == 0){min = ttotal;}
+      fprintf(file, "%d %f\n",i, min/ttotal);
       if (filename)
         {
           FILE *fout = fopen (filename, "w");
@@ -148,5 +152,6 @@ main (int argc, char *argv[])
       free (p);
       free (locks);
     }
+    fclose(file);
   return 0;
 }

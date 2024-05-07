@@ -72,8 +72,10 @@ move_particles (struct particle *p, struct particle *f, struct particle *v,
 int
 main (int argc, char *argv[])
 {
-  double ttotal, tinit = 0, tforces = 0, tmove = 0;
-  for (int i = 0; i <= 12; i += 2)
+  double ttotal, tinit = 0, tforces = 0, tmove = 0, min = 1233;
+  FILE* file;
+  file = fopen("izbvich.dat", "w");
+  for (int i = 0; i <= 8; i += 2)
     {
       ttotal = wtime ();
       int n = (argc > 1) ? atoi (argv[1]) : 10;
@@ -117,6 +119,8 @@ main (int argc, char *argv[])
       printf ("# NBody (n=%d)\n", n);
       printf ("# Elapsed time (sec): ttotal %.6f, tinit %.6f, nthreads  %d\n",
               ttotal, tinit, i);
+      if(i == 0){min = ttotal;}
+      fprintf(file, "%d %f\n",i, min/ttotal);
 
       if (filename)
         {
@@ -138,5 +142,6 @@ main (int argc, char *argv[])
       free (f);
       free (p);
     }
+    fclose(file);
   return 0;
 }
